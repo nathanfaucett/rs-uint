@@ -136,6 +136,13 @@ macro_rules! impl_uint {
             fn pow(self, exp: u32) -> Self {
                 <$T>::pow(self, exp)
             }
+            /// # Examples
+            /// ~~~
+            /// use uint::UInt;
+            ///
+            /// assert_eq!(6.gcd(8), 2);
+            /// assert_eq!(7.gcd(3), 1);
+            /// ~~~
             #[inline]
             fn gcd(self, other: Self) -> Self {
                 let mut m = self;
@@ -165,18 +172,46 @@ macro_rules! impl_uint {
                     n << shift
                 }
             }
+            /// # Examples
+            /// ~~~
+            /// use uint::UInt;
+            ///
+            /// assert_eq!(7.lcm(3), 21);
+            /// assert_eq!(2.lcm(4), 4);
+            /// ~~~
             #[inline]
             fn lcm(self, other: Self) -> Self {
                 (self * (other / self.gcd(other))).abs()
             }
+            /// # Examples
+            /// ~~~
+            /// use uint::UInt;
+            ///
+            /// assert_eq!(9.is_multiple_of(3), true);
+            /// assert_eq!(3.is_multiple_of(9), false);
+            /// ~~~
             #[inline]
             fn is_multiple_of(self, other: Self) -> bool {
                 self % other == 0
             }
+            /// # Examples
+            /// ~~~
+            /// use uint::UInt;
+            ///
+            /// assert_eq!(3.is_even(), false);
+            /// assert_eq!(4.is_even(), true);
+            /// ~~~
             #[inline]
             fn is_even(self) -> bool {
                 (self) & 1 == 0
             }
+            /// # Examples
+            /// ~~~
+            /// use uint::UInt;
+            ///
+            /// assert_eq!(3.is_odd(), true);
+            /// assert_eq!(4.is_odd(), false);
+            /// ~~~
             #[inline]
             fn is_odd(self) -> bool {
                 !self.is_even()
