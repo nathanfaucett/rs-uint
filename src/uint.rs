@@ -1,5 +1,6 @@
 use collections::string::ToString;
 use core::ops::*;
+use core::cmp::Ord;
 use core::mem;
 
 use abs::Abs;
@@ -22,6 +23,7 @@ pub trait UInt:
     + Clamp
     + ToPrimitive
     + FromPrimitive
+    + Ord
     + PartialEq
     + PartialOrd
     + ToString
