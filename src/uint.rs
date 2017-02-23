@@ -1,5 +1,6 @@
 use collections::string::ToString;
 use core::ops::*;
+use core::mem;
 
 use abs::Abs;
 use bounded::Bounded;
@@ -60,6 +61,11 @@ pub trait UInt:
     fn to_be(self) -> Self;
     fn to_le(self) -> Self;
     fn pow(self, exp: u32) -> Self;
+    fn gcd(self, other: Self) -> Self;
+    fn lcm(self, other: Self) -> Self;
+    fn is_multiple_of(self, other: Self) -> bool;
+    fn is_even(self) -> bool;
+    fn is_odd(self) -> bool;
 }
 
 
@@ -129,6 +135,51 @@ macro_rules! impl_uint {
             #[inline]
             fn pow(self, exp: u32) -> Self {
                 <$T>::pow(self, exp)
+            }
+            #[inline]
+            fn gcd(self, other: Self) -> Self {
+                let mut m = self;
+                let mut n = other;
+
+                if m == 0 || n == 0 {
+                    (m | n).abs()
+                } else {
+                    let shift = (m | n).trailing_zeros();
+
+                    if m == Self::min_value() || n == Self::min_value() {
+                        return (1 << shift).abs()
+                    }
+
+                    m = m.abs();
+                    n = n.abs();
+                    n >>= n.trailing_zeros();
+
+                    while m != 0 {
+                        m >>= m.trailing_zeros();
+                        if n > m {
+                            mem::swap(&mut n, &mut m)
+                        }
+                        m -= n;
+                    }
+
+                    n << shift
+                }
+            }
+            #[inline]
+            fn lcm(self, other: Self) -> Self {
+                (self * (other / self.gcd(other))).abs()
+            }
+            #[inline]
+            fn is_multiple_of(self, other: Self) -> bool {
+                self % other == 0
+            }
+            #[inline]
+            fn is_even(self) -> bool {
+                (self) & 1 == 0
+            }
+            #[inline]
+            fn is_odd(self) -> bool {
+                !self.is_even()
             }
         }
     )
