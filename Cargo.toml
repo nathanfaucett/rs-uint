@@ -1,5 +1,5 @@
 [package]
-name = "uint"
+name = "unsigned"
 version = "0.1.0"
 authors = ["nathanfaucett <nathanfaucett@gmail.com>"]
 
@@ -7,17 +7,8 @@ keywords = ["unsigned", "integer", "trait"]
 description = "unsigned integer trait"
 license = "MIT"
 readme = "README.md"
-repository = "https://github.com/nathanfaucett/rs-uint.git"
-homepage = "https://github.com/nathanfaucett/rs-uint"
+repository = "https://github.com/nathanfaucett/rs-unsigned.git"
+homepage = "https://github.com/nathanfaucett/rs-unsigned"
 
 [dependencies]
-abs = {git = "https://github.com/nathanfaucett/rs-abs.git"}
-bounded = {git = "https://github.com/nathanfaucett/rs-bounded.git"}
-clamp = {git = "https://github.com/nathanfaucett/rs-clamp.git"}
-to_primitive = {git = "https://github.com/nathanfaucett/rs-to_primitive.git"}
-from_primitive = {git = "https://github.com/nathanfaucett/rs-from_primitive.git"}
-max = {git = "https://github.com/nathanfaucett/rs-max.git"}
-min = {git = "https://github.com/nathanfaucett/rs-min.git"}
-one = {git = "https://github.com/nathanfaucett/rs-one.git"}
-signum = {git = "https://github.com/nathanfaucett/rs-signum.git"}
-zero = {git = "https://github.com/nathanfaucett/rs-zero.git"}
+integer = {git = "https://github.com/nathanfaucett/rs-integer.git"}
