@@ -1,7 +1,7 @@
 #![no_std]
 
 
-extern crate integer;
+extern crate num;
 
 
 mod unsigned;

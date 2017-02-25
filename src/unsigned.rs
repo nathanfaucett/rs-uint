@@ -1,7 +1,7 @@
-use integer::Integer;
+use num::Num;
 
 
-pub trait Unsigned: Integer {}
+pub trait Unsigned: Num {}
 
 
 impl Unsigned for u8 {}

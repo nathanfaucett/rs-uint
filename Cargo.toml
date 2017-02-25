@@ -11,4 +11,4 @@ repository = "https://github.com/nathanfaucett/rs-unsigned.git"
 homepage = "https://github.com/nathanfaucett/rs-unsigned"
 
 [dependencies]
-integer = {git = "https://github.com/nathanfaucett/rs-integer.git"}
+num = {git = "https://github.com/nathanfaucett/rs-num.git"}
